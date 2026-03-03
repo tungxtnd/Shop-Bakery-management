@@ -1,0 +1,7 @@
+Lệnh pull trước khi sửa để up to date: 
+      git pull origin main
+
+Các bước update file sau khi sửa lên github
+Bước 1: git add .
+Bước 2: git commit -m "ghi thông báo vào"
+Bước 3: git push

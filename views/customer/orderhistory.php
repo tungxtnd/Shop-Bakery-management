@@ -266,7 +266,7 @@ $conn->close();
                         <?php if (strtolower($order['status']) === 'shipped'): ?>
                             <form method="post" action="" style="display:inline;">
                                 <input type="hidden" name="confirm_delivered_id" value="<?php echo $order['id']; ?>">
-                                <button type="submit" class="feedback-btn" style="margin-left:12px; background:none; width: 50px;" onclick="return confirm('Are you sure you want to confirm the order is delivered?');"><img src="/flower_shop/assets/img/check.png" width=100%></button>
+                                <button type="submit" class="feedback-btn" style="margin-left:12px; background:none; width: 50px;" onclick="return confirm('Are you sure you want to confirm the order is delivered?');"><img src="/Shop-Bakery-management/assets/img/check.png" width=100%></button>
                             </form>
                         <?php endif; ?>
                         <div class="product-feedback">

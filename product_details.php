@@ -135,7 +135,7 @@ $shipping_fee = 20000;
     <body>
         <?php include 'includes/header.php'; ?>
         <br>
-        <a href="/views/customer/homepage.php" style="text-decoration: none; margin-left: 2%; color: #000;">Home</a> / <a href="/views/customer/shop.php" style="text-decoration: none; color: #000">All Bouquets</a> / <a href="/views/customer/product_details.php?id=<?php echo $product_id; ?>" style="text-decoration: none; color: #000;"><?php echo htmlspecialchars($product['name']); ?></a>
+        <a href="/homepage.php" style="text-decoration: none; margin-left: 2%; color: #000;">Home</a> / <a href="/shop.php" style="text-decoration: none; color: #000">All Bouquets</a> / <a href="/product_details.php?id=<?php echo $product_id; ?>" style="text-decoration: none; color: #000;"><?php echo htmlspecialchars($product['name']); ?></a>
         <div class="product-detail">
             <div class="product-detail-left">
             <h2><?php echo htmlspecialchars($product['name']); ?></h2>

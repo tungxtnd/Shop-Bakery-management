@@ -352,31 +352,31 @@ if (session_status() === PHP_SESSION_NONE) {
         </center>
         <div class="collection1">
             <div class="container1">
-                <a href="/views/customer/collection.php?c=1">
+                <a href="/Shop-Bakery-management/views/customer/collection.php?c=1">
                     <img src="/Shop-Bakery-management/assets/img/collection11.png" alt="Bouquet 1" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Traditional Cake</b></span></div>
                 </a>
             </div>
             <div class="container1">
-                <a href="/views/customer/collection.php?c=2">
+                <a href="/Shop-Bakery-management/views/customer/collection.php?c=2">
                     <img src="/Shop-Bakery-management/assets/img/collection12.jpg" alt="Bouquet 2" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Birthday Flowers</b></span></div>
                 </a>
             </div>
             <div class="container2">
-                <a href="/views/customer/collection.php?c=3">
+                <a href="/Shop-Bakery-management/views/customer/collection.php?c=3">
                     <img src="/Shop-Bakery-management/assets/img/trungthu1.jpg" alt="Bouquet 3" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>International Woman’s Day Flowers</b></span></div>
                 </a>
             </div>
             <div class="container2">
-                <a href="/views/customer/collection.php?c=4">
+                <a href="/Shop-Bakery-management/views/customer/collection.php?c=4">
                     <img src="/Shop-Bakery-management/assets/img/collection8.jpg" alt="Bouquet 4" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Teacher’s Day Flowers</b></span></div>
                 </a>
             </div>
             <div class="container2">
-                <a href="/views/customer/collection.php?c=5">
+                <a href="/Shop-Bakery-management/views/customer/collection.php?c=5">
                     <img src="/Shop-Bakery-management/assets/img/collection9.jpg" alt="Bouquet 5" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Parents’ Day Flowers</b></span></div>
                 </a>

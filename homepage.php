@@ -521,7 +521,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 const div = document.createElement('div');
                 div.className = 'bakery';
                 div.innerHTML = `
-                    <a href="/views/customer/product_details.php?id=${bakery.id}" style="text-decoration:none;color:inherit;">
+                    <a href="/product_details.php?id=${bakery.id}" style="text-decoration:none;color:inherit;">
                         <img src="/assets/img/${bakery.image}" alt="${bakery.name}">
                         <h3>${bakery.name}</h3>
                         <p>${Number(bakery.price).toLocaleString()} VND</p>

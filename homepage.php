@@ -255,7 +255,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <body>
     <?php include 'includes/header.php'; ?>
     <?php if (!empty($_SESSION['login_success'])): ?>
-        <div id="login-toast" class="login-toast"><img src="/Shop-Bakery-management/assets/img/bell.png" style = "width: 6%; margin-right:20px;" >Login successful!</div>
+        <div id="login-toast" class="login-toast"><img src="/assets/img/bell.png" style = "width: 6%; margin-right:20px;" >Login successful!</div>
         <script>
             setTimeout(function() {
                 document.getElementById('login-toast').style.opacity = '0';
@@ -275,7 +275,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="hero-banner"> 
                     
                     <video autoplay loop muted playsinline class="bg-video">
-                        <source src="/Shop-Bakery-management/assets/img/make_cake.mp4" type="video/mp4">
+                        <source src="/assets/img/make_cake.mp4" type="video/mp4">
                         Trình duyệt của bạn không hỗ trợ video.
                     </video>
 
@@ -289,7 +289,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </div>
             </div>
         <div class="swiper-slide">
-                        <div class="hero-banner" style="background-image: url('/Shop-Bakery-management/assets/img/banner1.jpg');">
+                        <div class="hero-banner" style="background-image: url('/assets/img/banner1.jpg');">
                             <div class="overlay"></div>
                             <div class="banner-content">
                                 <p style="font-size: 20px; margin:0;">“Ai cũng có</p>
@@ -348,36 +348,36 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="containerb" id="collection">
         <center>
             <h3>Discover</h3>
-            <h2><img src="/Shop-Bakery-management/assets/img/flower_5768957.png" width=1.4%> Our Collections <img src="/Shop-Bakery-management/assets/img/flower_5768957.png" width=1.4%></h2>
+            <h2><img src="/assets/img/flower_5768957.png" width=1.4%> Our Collections <img src="/Shop-Bakery-management/assets/img/flower_5768957.png" width=1.4%></h2>
         </center>
         <div class="collection1">
             <div class="container1">
-                <a href="/Shop-Bakery-management/views/customer/collection.php?c=1">
-                    <img src="/Shop-Bakery-management/assets/img/collection11.png" alt="Bouquet 1" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
+                <a href="/views/customer/collection.php?c=1">
+                    <img src="/assets/img/collection11.png" alt="Bouquet 1" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Traditional Cake</b></span></div>
                 </a>
             </div>
             <div class="container1">
-                <a href="/Shop-Bakery-management/views/customer/collection.php?c=2">
-                    <img src="/Shop-Bakery-management/assets/img/collection12.jpg" alt="Bouquet 2" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
+                <a href="/views/customer/collection.php?c=2">
+                    <img src="/assets/img/collection12.jpg" alt="Bouquet 2" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Birthday Flowers</b></span></div>
                 </a>
             </div>
             <div class="container2">
-                <a href="/Shop-Bakery-management/views/customer/collection.php?c=3">
-                    <img src="/Shop-Bakery-management/assets/img/trungthu1.jpg" alt="Bouquet 3" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
+                <a href="/views/customer/collection.php?c=3">
+                    <img src="/assets/img/trungthu1.jpg" alt="Bouquet 3" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>International Woman’s Day Flowers</b></span></div>
                 </a>
             </div>
             <div class="container2">
-                <a href="/Shop-Bakery-management/views/customer/collection.php?c=4">
-                    <img src="/Shop-Bakery-management/assets/img/collection8.jpg" alt="Bouquet 4" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
+                <a href="/views/customer/collection.php?c=4">
+                    <img src="/assets/img/collection8.jpg" alt="Bouquet 4" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Teacher’s Day Flowers</b></span></div>
                 </a>
             </div>
             <div class="container2">
-                <a href="/Shop-Bakery-management/views/customer/collection.php?c=5">
-                    <img src="/Shop-Bakery-management/assets/img/collection9.jpg" alt="Bouquet 5" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
+                <a href="/views/customer/collection.php?c=5">
+                    <img src="/assets/img/collection9.jpg" alt="Bouquet 5" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Parents’ Day Flowers</b></span></div>
                 </a>
             </div>
@@ -521,8 +521,8 @@ if (session_status() === PHP_SESSION_NONE) {
                 const div = document.createElement('div');
                 div.className = 'bakery';
                 div.innerHTML = `
-                    <a href="/Shop-Bakery-management/product_details.php?id=${bakery.id}" style="text-decoration:none;color:inherit;">
-                        <img src="/Shop-Bakery-management/assets/img/${bakery.image}" alt="${bakery.name}">
+                    <a href="/views/customer/product_details.php?id=${bakery.id}" style="text-decoration:none;color:inherit;">
+                        <img src="/assets/img/${bakery.image}" alt="${bakery.name}">
                         <h3>${bakery.name}</h3>
                         <p>${Number(bakery.price).toLocaleString()} VND</p>
                     </a>

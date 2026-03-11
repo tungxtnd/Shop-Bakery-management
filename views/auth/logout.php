@@ -15,5 +15,5 @@ if (isset($_SESSION['user_id'])) {
 }
 session_unset();
 session_destroy();
-header("Location:/Shop-Bakery-management/homepage.php");
+header("Location:/homepage.php");
 exit;

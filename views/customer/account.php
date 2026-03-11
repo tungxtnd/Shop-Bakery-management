@@ -273,9 +273,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['change_password'])) {
         <li>
             <span style="display:block;padding:10px 18px;color:#000;font-size:16px;">Account</span>
             <ul class="submenu">
-                <li><a href="/Shop-Bakery-management/views/customer/account.php">My Account</a></li>
-                <li><a href="/Shop-Bakery-management/views/customer/orderhistory.php">My Orders</a></li>
-                <li><a href="/Shop-Bakery-management/views/customer/noti.php">Notification</a></li>
+                <li><a href="/views/customer/account.php">My Account</a></li>
+                <li><a href="/views/customer/orderhistory.php">My Orders</a></li>
+                <li><a href="/views/customer/noti.php">Notification</a></li>
             </ul>
         </li>
     </ul>

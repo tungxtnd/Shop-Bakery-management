@@ -267,9 +267,9 @@
         <div class="header-main <?php echo ($currentPage == 'homepage.php') ? 'header-transparent' : ''; ?>">
         <div class="header-left">
             <div class="logo">
-                <a href="/Shop-Bakery-management/homepage.php" style="background:none; border:none; display:inline-block;">
+                <a href="/views/homepage.php" style="background:none; border:none; display:inline-block;">
                     <div class="logo-img" style="background:none; border:none;">
-                        <img src="/Shop-Bakery-management/assets/img/logo.jpg" alt="Blossom Logo" style="width:60px; height:60px; object-fit:contain;">
+                        <img src="/views/assets/img/logo.jpg" alt="Blossom Logo" style="width:60px; height:60px; object-fit:contain;">
                     </div>
                 </a>
             </div>
@@ -278,24 +278,24 @@
                     <a href="/Shop-Bakery-management/shop.php">BOUQUET</a>
                 </div>
                 <div class="nav-item">
-                    <a href="<?php echo ($currentPage == 'homepage.php') ? '#collection' : '/Shop-Bakery-management/views/customer/collection.php'; ?>">
+                    <a href="<?php echo ($currentPage == 'homepage.php') ? '#collection' : '/views/customer/collection.php'; ?>">
                         COLLECTION
                     </a>
                     <div class="dropdown">
-                        <a href="/Shop-Bakery-management/views/customer/collection.php?c=all">All collections</a>
-                        <a href="/Shop-Bakery-management/views/customer/collection.php?c=0">Birthday</a>
-                        <a href="/Shop-Bakery-management/views/customer/collection.php?c=1">Anniversary</a>
-                        <a href="/Shop-Bakery-management/views/customer/collection.php?c=2">Congratulations</a>
-                        <a href="/Shop-Bakery-management/views/customer/collection.php?c=3">Parent's Day</a>
-                        <a href="/Shop-Bakery-management/views/customer/collection.php?c=4">Teacher's Day</a>
-                        <a href="/Shop-Bakery-management/views/customer/collection.php?c=5">International's Day</a>
+                        <a href="/views/customer/collection.php?c=all">All collections</a>
+                        <a href="/views/customer/collection.php?c=0">Birthday</a>
+                        <a href="/views/customer/collection.php?c=1">Anniversary</a>
+                        <a href="/views/customer/collection.php?c=2">Congratulations</a>
+                        <a href="/views/customer/collection.php?c=3">Parent's Day</a>
+                        <a href="/views/customer/collection.php?c=4">Teacher's Day</a>
+                        <a href="/views/customer/collection.php?c=5">International's Day</a>
                     </div>
                 </div>
                 <div class="nav-item">
                     <a href="#about">OUR STORY</a>
                     <div class="dropdown">
-                        <a href="/Shop-Bakery-management/views/customer/about_us.php">About Us</a>
-                        <a href="/Shop-Bakery-management/views/customer/our_team.php">Our Team</a>
+                        <a href="/views/customer/about_us.php">About Us</a>
+                        <a href="/views/customer/our_team.php">Our Team</a>
                     </div>
                 </div>
             </nav>
@@ -311,7 +311,7 @@
             <span class="icon-cart" style="cursor:pointer;"
                 onclick="
                     <?php if (isset($_SESSION['user_id'])): ?>
-                        window.location.href='/Shop-Bakery-management/views/customer/noti.php';
+                        window.location.href='/views/customer/noti.php';
                     <?php else: ?>
                         alert('You need to log in first!');
                     <?php endif; ?>
@@ -322,7 +322,7 @@
             <span class="icon-cart" style="cursor:pointer;"
                 onclick="
                     <?php if (isset($_SESSION['user_id'])): ?>
-                        window.location.href='/Shop-Bakery-management/views/customer/cart.php';
+                        window.location.href='/views/customer/cart.php';
                     <?php else: ?>
                         alert('You need to log in first!');
                     <?php endif; ?>
@@ -334,13 +334,13 @@
                 <div class="user-icon" style="position:relative; cursor:pointer;">
                     <i class="fa-solid fa-user"></i>
                     <div class="dropdown">
-                        <a href="/Shop-Bakery-management/views/customer/account.php" style="padding:10px 20px; display:block; text-decoration:none; color:#222;">Profile</a>
-                        <a href="/Shop-Bakery-management/views/customer/orderhistory.php" style="padding:10px 20px; display:block; text-decoration:none; color:#222;">My Orders</a>
+                        <a href="/views/customer/account.php" style="padding:10px 20px; display:block; text-decoration:none; color:#222;">Profile</a>
+                        <a href="/views/customer/orderhistory.php" style="padding:10px 20px; display:block; text-decoration:none; color:#222;">My Orders</a>
                     </div>
                 </div>
-                <a href="/Shop-Bakery-management/views/auth/logout.php" class="sign-in" onclick="return confirm('Are you sure you want to logout?');"><span class="dot">•</span><b>LOGOUT</b></a>
+                <a href="/views/auth/logout.php" class="sign-in" onclick="return confirm('Are you sure you want to logout?');"><span class="dot">•</span><b>LOGOUT</b></a>
             <?php else: ?>
-                <a href="/Shop-Bakery-management/views/auth/login.php" class="sign-in"><span class="dot">•</span><b>SIGN-IN</b></a>
+                <a href="/views/auth/login.php" class="sign-in"><span class="dot">•</span><b>SIGN-IN</b></a>
             <?php endif; ?>
         </div>
     </div>

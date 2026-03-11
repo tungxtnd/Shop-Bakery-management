@@ -4,9 +4,9 @@ session_start();
 include '../../connectdb.php';
 
 $error = '';
-$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/Shop-Bakery-management/homepage.php';
+$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/homepage.php';
 if (strpos($referer, 'register.php') !== false) {
-    $redirect = '/Shop-Bakery-management/homepage.php';
+    $redirect = '/homepage.php';
 } else {
     $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : $referer;
 }

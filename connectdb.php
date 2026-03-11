@@ -1,8 +1,8 @@
 <?php 
 // Database connection settings
 $servername = "localhost";
-$username = "root";
-$pass = "";
+$username = "root_user";
+$pass = "admin123";
 $dbname = "ql_bakery";
 $conn = new mysqli($servername, $username, $pass, $dbname);
 

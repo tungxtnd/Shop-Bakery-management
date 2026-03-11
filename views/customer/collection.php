@@ -222,7 +222,7 @@ body {
                 foreach ($products as $product) {
                     $img = "/Shop-Bakery-management/assets/img/" . htmlspecialchars($product['image']);
                     echo '<div class="shop-card">';
-                    echo '<a href="/Shop-Bakery-management/views/customer/product_details.php?id=' . $product['id'] . '">';
+                    echo '<a href="/Shop-Bakery-management/product_details.php?id=' . $product['id'] . '">';
                     echo '<img src="' . $img . '" alt="' . htmlspecialchars($product['name']) . '">';
                     echo '<div class="shop-card-info">';
                     echo '<div class="shop-card-title">' . htmlspecialchars($product['name']) . '</div>';

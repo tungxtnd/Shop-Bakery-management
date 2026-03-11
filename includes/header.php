@@ -267,7 +267,7 @@
         <div class="header-main <?php echo ($currentPage == 'homepage.php') ? 'header-transparent' : ''; ?>">
         <div class="header-left">
             <div class="logo">
-                <a href="/views/homepage.php" style="background:none; border:none; display:inline-block;">
+                <a href="/homepage.php" style="background:none; border:none; display:inline-block;">
                     <div class="logo-img" style="background:none; border:none;">
                         <img src="/views/assets/img/logo.jpg" alt="Blossom Logo" style="width:60px; height:60px; object-fit:contain;">
                     </div>

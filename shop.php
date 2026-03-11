@@ -191,7 +191,7 @@ $total_pages = ceil($total_products / $per_page);
     <p style="text-align:center;">We design bouquets the French way, using seasons and our Parisian roots as inspiration.</p>
     <form class="search-bar" method="get" action="/shop-bakery-management/shop.php">
         <input type="text" name="search" placeholder="Search products..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
-        <button buttontype="submit"><a href="/shop-bakery-management/shop.php" style="color:#e75480; text-align:center;">Reset</a></button>
+        <button buttontype="submit"><a href="/.php" style="color:#e75480; text-align:center;">Reset</a></button>
     </form>
     <div class="shop-main">
         <form class="sidebar" method="get" action="/shop-bakery-management/shop.php">

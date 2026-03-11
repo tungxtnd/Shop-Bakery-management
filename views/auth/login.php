@@ -4,9 +4,9 @@ session_start();
 include '../../connectdb.php';
 
 $error = '';
-$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/shop-bakery-management/homepage.php';
+$referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '/homepage.php';
 if (strpos($referer, 'register.php') !== false) {
-    $redirect = '/shop-bakery-management/homepage.php';
+    $redirect = '/homepage.php';
 } else {
     $redirect = isset($_GET['redirect']) ? $_GET['redirect'] : $referer;
 }
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['login_success'] = true;
 
             if ($role === 'admin') {
-                header("Location: /shop-bakery-management/views/admin/dashboard.php");
+                header("Location: /views/admin/dashboard.php");
             } else {
                 header("Location: $redirect");
             }

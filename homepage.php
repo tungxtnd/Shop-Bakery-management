@@ -166,6 +166,7 @@ if (session_status() === PHP_SESSION_NONE) {
             position: relative;
             float: left;
             margin: 0 0.5%;
+            object-fit: cover;
         }
         .container2 {
             width: 33%;
@@ -175,6 +176,7 @@ if (session_status() === PHP_SESSION_NONE) {
         }
         .collection1 {
             margin-top: 20px;
+            
         }
         .collection1::after {
             content: "";
@@ -253,7 +255,7 @@ if (session_status() === PHP_SESSION_NONE) {
 <body>
     <?php include 'includes/header.php'; ?>
     <?php if (!empty($_SESSION['login_success'])): ?>
-        <div id="login-toast" class="login-toast"><img src="/shop_bakery_management/assets/img/bell.png" style = "width: 6%; margin-right:20px;" >Login successful!</div>
+        <div id="login-toast" class="login-toast"><img src="/assets/img/bell.png" style = "width: 6%; margin-right:20px;" >Login successful!</div>
         <script>
             setTimeout(function() {
                 document.getElementById('login-toast').style.opacity = '0';
@@ -264,8 +266,57 @@ if (session_status() === PHP_SESSION_NONE) {
         </script>
         <?php unset($_SESSION['login_success']); ?>
     <?php endif; ?>
-    <header>
-        <img src="/shop-bakery-management/assets/img/home_banner.jpg" alt="Flower Shop" style="width: 40%; height: 500px; object-fit: cover; justify-content: right; border-radius: 8px; position: absolute; right: 0; top: 0px; margin-right: 0px;">
+        <div class="swiper myHeroSwiper">
+        <div class="swiper-wrapper">
+            
+            
+
+            <div class="swiper-slide">
+                <div class="hero-banner"> 
+                    
+                    <video autoplay loop muted playsinline class="bg-video">
+                        <source src="/assets/img/make_cake.mp4" type="video/mp4">
+                        Trình duyệt của bạn không hỗ trợ video.
+                    </video>
+
+                    <div class="overlay"></div>
+                    <div class="banner-content">
+                        <p class="small-text" style="font-size: 20px; margin:0;">“Bánh luôn đạt</p>
+                        <h1 class="main-title">CHẤT LƯỢNG CAO</h1>
+                        <p class="sub-text">Để đảm bảo chất lượng hàng đầu, Bakery luôn chọn nguyên liệu chuẩn, đầu tư máy móc hiện đại, mang đến bánh chất lượng cao cho khách hàng.”</p>
+                    </div>
+
+                </div>
+            </div>
+        <div class="swiper-slide">
+                        <div class="hero-banner" style="background-image: url('/assets/img/banner1.jpg');">
+                            <div class="overlay"></div>
+                            <div class="banner-content">
+                                <p style="font-size: 20px; margin:0;">“Ai cũng có</p>
+                                <h1 class="main-title">TRÁCH NHIỆM</h1>
+                                <p class="sub-text">Chăm chỉ, thân thiện, trách nhiệm là yêu cầu cốt lõi cho mọi nhân viên tại Bakery ngay từ những ngày đầu làm việc.”</p>
+                            </div>
+                        </div>
+                    </div>
+            <div class="swiper-slide">
+                <div class="hero-banner" style="background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2072&auto=format&fit=crop');">
+                    <div class="overlay"></div>
+                    <div class="banner-content">
+                        <p style="font-size: 20px; margin:0;">“Hương vị</p>
+                        <h1 class="main-title">TRUYỀN THỐNG</h1>
+                        <p class="sub-text">Chúng tôi giữ gìn trọn vẹn công thức làm bánh thủ công, mang đến những mẻ bánh nóng hổi và thơm ngon nhất mỗi ngày.”</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- <header>
+        <img src="/assets/img/home_banner.jpg" alt="Flower Shop" style="width: 40%; height: 500px; object-fit: cover; justify-content: right; border-radius: 8px; position: absolute; right: 0; top: 0px; margin-right: 0px;">
         <h1>Blossom Flower Shop</h1>
         <p style="font-family: 'Charmonman';">A bouquet of love</p>
         <p>Welcome to our flower shop! Explore our beautiful collection of flowers.
@@ -275,7 +326,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <span style="padding-left: 2%; font-size: 12pt"><a href="#" style="text-decoration:none; color:black;"><b>Read more</b></a></span>
         <br><br><br><br><br>
         <p style="font-size: 12pt; font-family: Montserrat;"><b>Get a discount on your first order!</b></p>
-    </header>
+    </header> -->
     <div class="container" id="bouquet">
         <div class="bestsellers">
             <div class="bestsellers-text">
@@ -297,36 +348,36 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="containerb" id="collection">
         <center>
             <h3>Discover</h3>
-            <h2><img src="/shop-bakery-management/assets/img/flower_5768957.png" width=1.4%> Our Collections <img src="/shop-bakery-management/assets/img/flower_5768957.png" width=1.4%></h2>
+            <h2><img src="/assets/img/flower_5768957.png" width=1.4%> Our Collections <img src="/shop-bakery-management/assets/img/flower_5768957.png" width=1.4%></h2>
         </center>
         <div class="collection1">
             <div class="container1">
-                <a href="/shop-bakery-management/views/customer/collection.php?c=1">
-                    <img src="/shop-bakery-management/assets/img/collection1.png" alt="Bouquet 1" style="width: 100%; object-fit: cover; border-radius: 8px;">
-                    <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Anniversary Flowers</b></span></div>
+                <a href="/views/customer/collection.php?c=1">
+                    <img src="/assets/img/collection11.png" alt="Bouquet 1" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
+                    <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Traditional Cake</b></span></div>
                 </a>
             </div>
             <div class="container1">
-                <a href="/shop-bakery-management/views/customer/collection.php?c=2">
-                    <img src="/shop-bakery-management/assets/img/collection2.png" alt="Bouquet 2" style="width: 100%; object-fit: cover; border-radius: 8px;">
+                <a href="/views/customer/collection.php?c=2">
+                    <img src="/assets/img/collection12.jpg" alt="Bouquet 2" style="width: 100%; height: 400px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Birthday Flowers</b></span></div>
                 </a>
             </div>
             <div class="container2">
-                <a href="/shop-bakery-management/views/customer/collection.php?c=3">
-                    <img src="/shop-bakery-management/assets/img/collection3.png" alt="Bouquet 3" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
+                <a href="/views/customer/collection.php?c=3">
+                    <img src="/assets/img/trungthu1.jpg" alt="Bouquet 3" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>International Woman’s Day Flowers</b></span></div>
                 </a>
             </div>
             <div class="container2">
-                <a href="/shop-bakery-management/views/customer/collection.php?c=4">
-                    <img src="/shop-bakery-management/assets/img/collection4.png" alt="Bouquet 4" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
+                <a href="/views/customer/collection.php?c=4">
+                    <img src="/assets/img/collection8.jpg" alt="Bouquet 4" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Teacher’s Day Flowers</b></span></div>
                 </a>
             </div>
             <div class="container2">
-                <a href="/shop-bakery-management/views/customer/collection.php?c=5">
-                    <img src="/shop-bakery-management/assets/img/collection5.png" alt="Bouquet 5" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
+                <a href="/views/customer/collection.php?c=5">
+                    <img src="/assets/img/collection9.jpg" alt="Bouquet 5" style="width: 100%; height: 770px; object-fit: cover; border-radius: 8px;">
                     <div class="bottomleft">Collection<br><span style="font-size: 20pt;"><b>Parents’ Day Flowers</b></span></div>
                 </a>
             </div>
@@ -470,8 +521,8 @@ if (session_status() === PHP_SESSION_NONE) {
                 const div = document.createElement('div');
                 div.className = 'bakery';
                 div.innerHTML = `
-                    <a href="/shop-bakery-management/views/customer/product_details.php?id=${bakery.id}" style="text-decoration:none;color:inherit;">
-                        <img src="/shop-bakery-management/assets/img/${bakery.image}" alt="${bakery.name}">
+                    <a href="/product_details.php?id=${bakery.id}" style="text-decoration:none;color:inherit;">
+                        <img src="/assets/img/${bakery.image}" alt="${bakery.name}">
                         <h3>${bakery.name}</h3>
                         <p>${Number(bakery.price).toLocaleString()} VND</p>
                     </a>
@@ -552,6 +603,26 @@ if (session_status() === PHP_SESSION_NONE) {
                 }
             });
         });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+    var swiper = new Swiper(".myHeroSwiper", {
+        loop: true, // Cho phép trượt lặp lại vòng tròn
+        speed: 1000, // Tốc độ trượt (1 giây)
+        autoplay: {
+            delay: 5000, // Tự động trượt sau 5 giây
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
 </script>
 </body>
 </html>

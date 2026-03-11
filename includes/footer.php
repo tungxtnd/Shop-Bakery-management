@@ -147,14 +147,14 @@
     <!-- Top footer: Logo & Social icons -->
     <div class="footer-top">
       <div class="footer-logo">
-        <img src="/shop-bakery-management/assets/img/web_logo.png" alt="Blossom Logo">
+        <img src="/assets/img/web_logo.png" alt="Blossom Logo">
       </div>
       <div class="footer-social">
-        <a href="#"><img src="/shop-bakery-management/assets/img/ig.png" alt="Instagram"></a>
-        <a href="#"><img src="/shop-bakery-management/assets/img/facebook.png" alt="Facebook"></a>
-        <a href="#"><img src="/shop-bakery-management/assets/img/x.png" alt="X"></a>
-        <a href="#"><img src="/shop-bakery-management/assets/img/youtube.png" alt="YouTube"></a>
-        <a href="#"><img src="/shop-bakery-management/assets/img/email.png" alt="Email"></a>
+        <a href="#"><img src="/assets/img/ig.png" alt="Instagram"></a>
+        <a href="#"><img src="/assets/img/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="/assets/img/x.png" alt="X"></a>
+        <a href="#"><img src="/assets/img/youtube.png" alt="YouTube"></a>
+        <a href="#"><img src="/assets/img/email.png" alt="Email"></a>
       </div>
     </div>
 

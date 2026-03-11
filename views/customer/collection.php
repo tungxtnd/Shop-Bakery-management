@@ -4,7 +4,7 @@ session_start();
 include '../../includes/header.php';
 
 // Lấy danh sách collection từ database
-$conn = new mysqli('localhost', 'root', '', 'ql_bakery');
+$conn = new mysqli('localhost', 'root_user', 'admin123', 'ql_bakery');
 $conn->set_charset('utf8');
 $collections = [];
 $sql = "SELECT id, name, description FROM collections";
@@ -22,7 +22,7 @@ $selected = isset($_GET['c']) ? $_GET['c'] : 'all';
 // Lấy sản phẩm thuộc collection nếu đã chọn collection cụ thể
 $products = [];
 if (is_numeric($selected) && isset($collections[$selected])) {
-    $conn = new mysqli('localhost', 'root', '', 'ql_bakery');
+    $conn = new mysqli('localhost', 'root_user', 'admin123', 'ql_bakery');
     $conn->set_charset('utf8');
     $stmt = $conn->prepare("SELECT * FROM products WHERE collection_id = ? AND stock > 0");
     $stmt->bind_param("i", $collections[$selected]['id']);
@@ -220,9 +220,9 @@ body {
                 echo '<div style="padding:32px;text-align:center;color:#888;">No products in this collection.</div>';
             } else {
                 foreach ($products as $product) {
-                    $img = "/assets/img/" . htmlspecialchars($product['image']);
+                    $img = "/Shop-Bakery-management/assets/img/" . htmlspecialchars($product['image']);
                     echo '<div class="shop-card">';
-                    echo '<a href="/product_details.php?id=' . $product['id'] . '">';
+                    echo '<a href="/Shop-Bakery-management/views/customer/product_details.php?id=' . $product['id'] . '">';
                     echo '<img src="' . $img . '" alt="' . htmlspecialchars($product['name']) . '">';
                     echo '<div class="shop-card-info">';
                     echo '<div class="shop-card-title">' . htmlspecialchars($product['name']) . '</div>';

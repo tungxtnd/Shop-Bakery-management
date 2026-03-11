@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$already_reviewed) {
         error_log(print_r($_FILES, true));
         // Upload images
         if (!empty($_FILES['review_images']['name'][0])) {
-            $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/flower_shop/assets/img/review/';
+            $upload_dir = $_SERVER['DOCUMENT_ROOT'] . '/Shop-Bakery-management/assets/img/review/';
             if (!is_dir($upload_dir)) mkdir($upload_dir, 0777, true);
             foreach ($_FILES['review_images']['tmp_name'] as $idx => $tmp_name) {
                 if ($_FILES['review_images']['error'][$idx] !== UPLOAD_ERR_OK) continue;

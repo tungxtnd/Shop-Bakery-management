@@ -103,12 +103,12 @@ $result = $stmt->get_result();
                         <input type="checkbox" name="checkout_items[]" value="<?php echo $row['cart_id']; ?>" class="item-checkbox">
                     </td>
                     <td>
-                        <img src="/assets/img/<?php echo htmlspecialchars($row['product_image']); ?>" alt="">
+                        <img src="/Shop-Bakery-management/assets/img/<?php echo htmlspecialchars($row['product_image']); ?>" alt="">
                         <div><?php echo htmlspecialchars($row['product_name']); ?></div>
                     </td>
                     <td>
                         <?php if ($row['card_name']): ?>
-                            <img src="/assets/img/<?php echo htmlspecialchars($row['card_image']); ?>" alt="" style="width:40px;height:40px;"><br>
+                            <img src="/Shop-Bakery-management/assets/img/<?php echo htmlspecialchars($row['card_image']); ?>" alt="" style="width:40px;height:40px;"><br>
                             <?php echo htmlspecialchars($row['card_name']); ?><br>
                             +<?php echo number_format($row['card_price']); ?> VND
                             <span data-card-price="<?php echo $row['card_price']; ?>" style="display:none;"></span>

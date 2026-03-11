@@ -26,7 +26,7 @@ if ($card_result && $card_result->num_rows > 0) {
 
 if (isset($_POST['add_to_cart'])) {
     if (!isset($_SESSION['user_id'])) {
-        echo "<script>alert('You need to log in first!'); window.location='/views/auth/login.php';</script>";
+        echo "<script>alert('You need to log in first!'); window.location='/Shop-Bakery-management/views/auth/login.php';</script>";
         exit;
     }
     $user_id = $_SESSION['user_id'];
@@ -38,7 +38,7 @@ if (isset($_POST['add_to_cart'])) {
     $stmt = $conn->prepare("INSERT INTO cart_items (user_id, product_id, quantity, service_id, card_message) VALUES (?, ?, ?, ?, ?)");
     $stmt->bind_param("iiiis", $user_id, $product_id, $quantity, $service_id, $card_message);
     if ($stmt->execute()) {
-        echo "<script>alert('Add to cart successfully!'); window.location='/views/customer/cart.php';</script>";
+        echo "<script>alert('Add to cart successfully!'); window.location='/Shop-Bakery-management/views/customer/cart.php';</script>";
         exit;
     } else {
         echo "<script>alert('Failed to add to cart.');</script>";
@@ -140,7 +140,7 @@ $shipping_fee = 20000;
             <div class="product-detail-left">
             <h2><?php echo htmlspecialchars($product['name']); ?></h2>
             <div style="position:relative; width:100%; max-width:500px; margin:20px auto;">
-                <img src="/assets/img/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" style="width:100%; max-width:500px; display:block; border-radius:2px;">
+                <img src="/Shop-Bakery-management/assets/img/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" style="width:100%; max-width:500px; display:block; border-radius:2px;">
                 <span style="
                     position:absolute;
                     right:0;
@@ -233,7 +233,7 @@ $shipping_fee = 20000;
                                 data-card-price="<?php echo $card['price']; ?>"
                             >
                             <div>
-                                <img src="/assets/img/<?php echo htmlspecialchars($card['image']); ?>" alt="<?php echo htmlspecialchars($card['name']); ?>" style="width:150px; height:auto; display:block; margin:0;">
+                                <img src="/Shop-Bakery-management/assets/img/<?php echo htmlspecialchars($card['image']); ?>" alt="<?php echo htmlspecialchars($card['name']); ?>" style="width:150px; height:auto; display:block; margin:0;">
                                 <div><?php echo htmlspecialchars($card['name']); ?></div>
                                 <div style="color:#e75480;">+ <?php echo number_format($card['price']); ?> VND</div>
                             </div>
@@ -260,7 +260,7 @@ $shipping_fee = 20000;
                 <button 
                     type="button"
                     id="checkout-btn"
-                    href="/views/customer/pay.php?id=<?php echo $product_id; ?>"
+                    href="/Shop-Bakery-management/views/customer/pay.php?id=<?php echo $product_id; ?>"
                     style="width:30%; background-color:#e75480; color:white; padding:14px 20px; border:none; border-radius:4px; cursor:pointer; margin-left:10px;"
                 >Checkout</button>
             </form>
@@ -308,7 +308,7 @@ $shipping_fee = 20000;
             const card = document.querySelector('input[name="card"]:checked');
             const cardId = card ? card.value : '';
             const message = encodeURIComponent(document.querySelector('input[name="card_message"]').value || '');
-            let url = `/views/customer/pay.php?id=${productId}&quantity=${quantity}`;
+            let url = `/Shop-Bakery-management/views/customer/pay.php?id=${productId}&quantity=${quantity}`;
             if (cardId) url += `&card=${cardId}`;
             if (message) url += `&message=${message}`;
             window.location.href = url;

@@ -223,9 +223,9 @@ $total_pages = ceil($total_products / $per_page);
             <div class="products-grid">
                 <?php if ($result && $result->num_rows > 0): ?>
                     <?php while($row = $result->fetch_assoc()): ?>
-                        <a href="product_details.php?id=<?php echo $row['id']; ?>" class="product-card-link" style="text-decoration:none;color:inherit;">
+                        <a href="/Shop-Bakery-management/product_details.php?id=<?php echo $row['id']; ?>" class="product-card-link" style="text-decoration:none;color:inherit;">
                             <div class="product-card">
-                                <img src="assets/img/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['name']); ?>">
+                                <img src="/Shop-Bakery-management/assets/img/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['name']); ?>">
                                 <h3><?php echo htmlspecialchars($row['name']); ?></h3>
                                 <p><?php echo number_format($row['price']); ?> VND</p>
                                 <div class="desc"><?php echo htmlspecialchars(mb_strimwidth($row['description'], 0, 60, "...")); ?></div>

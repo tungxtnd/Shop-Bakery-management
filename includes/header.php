@@ -275,7 +275,7 @@
             </div>
             <nav class="nav">
                 <div class="nav-item">
-                    <a href="/Shop-Bakery-management/shop.php">BOUQUET</a>
+                    <a href="/shop.php">BOUQUET</a>
                 </div>
                 <div class="nav-item">
                     <a href="<?php echo ($currentPage == 'homepage.php') ? '#collection' : '/views/customer/collection.php'; ?>">

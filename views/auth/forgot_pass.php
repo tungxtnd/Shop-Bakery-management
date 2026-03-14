@@ -49,18 +49,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             max-width: 400px; margin: 60px auto; background: #fff; border-radius: 8px;
             box-shadow: 0 2px 12px #eee; padding: 32px;
         }
-        .forgot-container h2 { color: #e75480; margin-bottom: 24px; }
+        .forgot-container h2 { color: #cb5d00; margin-bottom: 24px; }
         .forgot-container input[type="email"],
         .forgot-container input[type="password"] {
             width: 100%; padding: 10px; margin-bottom: 18px; border: 1px solid #ccc; border-radius: 4px;
         }
         .forgot-container button {
-            background: #e75480; color: #fff; border: none; padding: 10px 24px; border-radius: 4px;
+            background: #cb5d00; color: #fff; border: none; padding: 10px 24px; border-radius: 4px;
             font-size: 1em; cursor: pointer; transition: background 0.2s;
         }
-        .forgot-container button:hover { background: #d84372; }
+        .forgot-container button:hover { background: #840000; }
         .msg { margin-bottom: 18px; color: #219653; }
-        .err { margin-bottom: 18px; color: #e75480; }
+        .err { margin-bottom: 18px; color: #840000; }
     </style>
 </head>
 <body>

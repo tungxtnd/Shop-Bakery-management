@@ -4,7 +4,7 @@ session_start();
 include 'connectdb.php';
 
 // Handle search and filter
-$where = "WHERE status = 1 AND stock > 0";
+$where = "WHERE status = 1 AND stock > 0 AND collection_id != 6";
 $params = [];
 if (!empty($_GET['search'])) {
     $where .= " AND name LIKE ?";
@@ -109,30 +109,47 @@ $total_pages = ceil($total_products / $per_page);
             flex-wrap: wrap;
             gap: 20px;
         }
+       
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Chia chính xác 3 cột bằng nhau */
+            gap: 30px; /* Khoảng cách giữa các sản phẩm */
+            width: 100%;
+        }
+
+        /* 2. THẺ SẢN PHẨM: Xóa bỏ hoàn toàn khung trắng và đổ bóng */
         .product-card {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px #eee;
-            width: 340px;
-            padding: 18px;
+            background: transparent; /* Xóa nền trắng */
+            box-shadow: none; /* Xóa viền mờ đổ bóng */
+            padding: 0; /* Xóa khoảng trắng bao quanh để ảnh tràn ra ngoài */
+            width: 100%;
+            box-sizing: border-box;
             text-align: center;
-            transition: box-shadow 0.2s;
+            height: 100%;
+            transition: transform 0.3s ease; /* Thêm hiệu ứng nhún mượt mà */
         }
+
+        /* Đổi hiệu ứng hover: Thay vì đổ bóng ô trắng, ta cho cả khối bánh hơi nảy lên 1 chút */
         .product-card:hover { 
-            box-shadow: 0 4px 16px #e75480; 
+            box-shadow: none; 
+            transform: translateY(-8px); 
         }
+
+        /* 3. ẢNH SẢN PHẨM: Bo góc trực tiếp vào bức ảnh giống hình mẫu */
         .product-card img { 
             width: 100%; 
-            max-width: 280px; 
-            border-radius: 8px; 
+            height: 280px; /* Tùy chỉnh độ cao ảnh cho vừa mắt (khoảng 280-300px là đẹp) */
+            object-fit: cover; 
+            border-radius: 12px; /* Bo tròn các góc của tấm ảnh */
+            margin-bottom: 15px; /* Đẩy phần tên bánh và giá tiền cách xa ảnh ra một chút */
         }
         .product-card h3 { 
             margin: 12px 0 8px 0; 
             font-size: 20px; 
-            color: #333; 
+            color: #840000; 
         }
         .product-card p { 
-            color: #e75480; 
+            color: #840000; 
             font-size: 18px; 
             margin: 0 0 10px 0; 
         }
@@ -144,7 +161,7 @@ $total_pages = ceil($total_products / $per_page);
         .product-card a {
             display: inline-block;
             margin-top: 10px;
-            background: #e75480;
+            background: #840000;
             color: #fff;
             padding: 8px 18px;
             border-radius: 4px;
@@ -152,10 +169,10 @@ $total_pages = ceil($total_products / $per_page);
             transition: background 0.2s;
         }
         .product-card a:hover { 
-            background: #d84372; 
+            background: #840000; 
         }
         button[type="submit"] {
-            background: #e75480;
+            background: #cb5d00;
             color: #fff;
             border: none;
             padding: 8px 16px;
@@ -191,7 +208,7 @@ $total_pages = ceil($total_products / $per_page);
     <p style="text-align:center;">We design bouquets the French way, using seasons and our Parisian roots as inspiration.</p>
     <form class="search-bar" method="get" action="/shop-bakery-management/shop.php">
         <input type="text" name="search" placeholder="Search products..." value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
-        <button buttontype="submit"><a href="/.php" style="color:#e75480; text-align:center;">Reset</a></button>
+        <button buttontype="submit"><a href="/.php" style="color:#cb5d00; text-align:center;">Reset</a></button>
     </form>
     <div class="shop-main">
         <form class="sidebar" method="get" action="/shop-bakery-management/shop.php">
@@ -247,7 +264,7 @@ $total_pages = ceil($total_products / $per_page);
             $query['page'] = $p;
             $url = 'shop.php?' . http_build_query($query);
             ?>
-            <a href="<?php echo $url; ?>" style="padding:8px 14px;border-radius:4px;<?php if($p == $page) echo 'background:#e75480;color:#fff;'; else echo 'background:#fff;color:#e75480;border:1px solid #e75480;'; ?>">
+            <a href="<?php echo $url; ?>" style="padding:8px 14px;border-radius:4px;<?php if($p == $page) echo 'background:#cb5d00;color:#fff;'; else echo 'background:#fff;color:#e75480;border:1px solid #840000;'; ?>">
                 <?php echo $p; ?>
             </a>
         <?php endfor; ?>

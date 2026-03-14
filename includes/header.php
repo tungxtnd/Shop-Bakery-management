@@ -269,13 +269,13 @@
             <div class="logo">
                 <a href="/homepage.php" style="background:none; border:none; display:inline-block;">
                     <div class="logo-img" style="background:none; border:none;">
-                        <img src="/views/assets/img/logo.jpg" alt="Blossom Logo" style="width:60px; height:60px; object-fit:contain;">
+                        <img src="/assets/img/logo.png" alt="Blossom Logo" style="width:60px; height:60px; object-fit:contain;">
                     </div>
                 </a>
             </div>
             <nav class="nav">
                 <div class="nav-item">
-                    <a href="/shop.php">BOUQUET</a>
+                    <a href="/shop.php">BAKERY</a>
                 </div>
                 <div class="nav-item">
                     <a href="<?php echo ($currentPage == 'homepage.php') ? '#collection' : '/views/customer/collection.php'; ?>">
@@ -283,14 +283,18 @@
                     </a>
                     <div class="dropdown">
                         <a href="/views/customer/collection.php?c=all">All collections</a>
-                        <a href="/views/customer/collection.php?c=0">Birthday</a>
-                        <a href="/views/customer/collection.php?c=1">Anniversary</a>
-                        <a href="/views/customer/collection.php?c=2">Congratulations</a>
-                        <a href="/views/customer/collection.php?c=3">Parent's Day</a>
-                        <a href="/views/customer/collection.php?c=4">Teacher's Day</a>
-                        <a href="/views/customer/collection.php?c=5">International's Day</a>
+                        
+                        <a href="/views/customer/collection.php?c=1">Cookies & Snacks</a>
+                        <a href="/views/customer/collection.php?c=2">Chilled Cakes & Desserts</a>
+                        <a href="/views/customer/collection.php?c=3">Traditional Cake</a>
+                        <a href="/views/customer/collection.php?c=0">Birthday Cake</a>
+                        <a href="/views/customer/collection.php?c=4">Pastries Cake</a>
+                        <!-- <a href="/views/customer/collection.php?c=5">International's Day</a> -->
                     </div>
                 </div>
+                <div class="nav-item">
+                        <a href="/views/customer/drinks.php">DRINKS</a>
+                    </div>
                 <div class="nav-item">
                     <a href="#about">OUR STORY</a>
                     <div class="dropdown">

@@ -9,10 +9,10 @@
       margin: 0;
       font-family: 'Abel';
       color: #000; 
-      background: #FAD1CC;
+      background: #7e481b;
     }
     .footer-bg {
-      background: #FAD1CC;
+      background: #7e481b;
       width: 100%;
     }
     .footer-top {
@@ -58,7 +58,7 @@
       font-weight: bold;
       margin-bottom: 10px;
       margin-top: 0;
-      color: #000;
+      color: #ffff;
     }
     .footer-col ul {
       list-style: none;
@@ -69,10 +69,10 @@
       margin-bottom: 5px;
       font-size: 0.97rem;
       font-weight: normal;
-      color: #000; 
+      color: #ffff; 
     }
     .footer-col ul li a {
-      color: #000; 
+      color: #ffff; 
       text-decoration: none;
       transition: text-decoration 0.2s;
     }
@@ -95,7 +95,7 @@
       letter-spacing: 0.01em;
     }
     .footer-bottom a {
-      color: #000;
+      color: #ffff;
       text-decoration: none;
       margin: 0 18px;
       transition: text-decoration 0.2s;
@@ -147,7 +147,7 @@
     <!-- Top footer: Logo & Social icons -->
     <div class="footer-top">
       <div class="footer-logo">
-        <img src="/assets/img/web_logo.png" alt="Blossom Logo">
+        <img src="/assets/img/logo.png" alt="Blossom Logo">
       </div>
       <div class="footer-social">
         <a href="#"><img src="/assets/img/ig.png" alt="Instagram"></a>

@@ -95,7 +95,9 @@ include '../../includes/header.php'; ?>
 .login-bg {
     height: calc(100vh - 70px);
     min-height: unset;
-    background: url('https://www.odealarose.com/media/cache/1920_1080_webp/build/images/flower-delivery.webp') center center/cover no-repeat;
+    background: url('https://bromabakery.com/wp-content/uploads/2020/01/Healthy-Thin-Mints-2-1067x1600.jpg') center center/cover no-repeat;
+
+    /* background: url('https://www.odealarose.com/media/cache/1920_1080_webp/build/images/flower-delivery.webp') center center/cover no-repeat; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,7 +151,7 @@ include '../../includes/header.php'; ?>
 }
 .login-input:focus {
     outline: none;
-    border-color: #e75480;
+    border-color: #9d503b;
 }
 .login-row {
     display: flex;
@@ -165,7 +167,7 @@ include '../../includes/header.php'; ?>
     transition: color 0.2s;
 }
 .login-link:hover {
-    color: #e75480;
+    color: #9d503b;
 }
 .login-checkbox {
     margin-right: 6px;
@@ -185,7 +187,7 @@ include '../../includes/header.php'; ?>
     transition: background 0.2s;
 }
 .login-btn:hover {
-    background: #e75480;
+    background: #9d503b;
 }
 .login-divider {
     border: none;
@@ -227,12 +229,12 @@ include '../../includes/header.php'; ?>
     transition: background 0.2s, color 0.2s;
 }
 .login-create-btn:hover {
-    background: #e75480;
+    background: #9d503b;
     color: #fff;
-    border-color: #e75480;
+    border-color: #9d503b;
 }
 .error {
-    color: #e75480;
+    color: #840000;
     text-align: center;
     margin-bottom: 12px;
     font-size: 14px;

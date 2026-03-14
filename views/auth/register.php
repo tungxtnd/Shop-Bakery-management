@@ -88,84 +88,89 @@ include '../../includes/header.php';
 .register-bg {
     height: calc(100vh - 70px);
     min-height: unset;
-    background: url('https://www.odealarose.com/media/cache/1920_1080_webp/build/images/flower-delivery.webp') center center/cover no-repeat;
+    background: url('https://bromabakery.com/wp-content/uploads/2020/01/Healthy-Thin-Mints-2-1067x1600.jpg') center center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     padding-top: 0;
 }
-.register-box {
+    .register-box {
     position: relative;
     z-index: 1;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.95); /* Mẹo nhỏ: Thêm độ trong suốt nhẹ (0.95) để form hòa quyện với nền hơn */
     border: 1px solid #222;
     border-radius: 12px;
-    max-width: 700px;
+    max-width: 550px; /* Thu hẹp từ 700px xuống 550px */
     width: 100%;
-    margin: 48px auto;
-    padding: 48px 48px 36px 48px;
+    margin: 40px auto;
+    padding: 30px 40px 24px 40px; /* Giảm khoảng trống viền xung quanh */
     box-sizing: border-box;
     box-shadow: 0 4px 24px #eee;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 650px;
+    /* ĐÃ XÓA height: 650px; ĐỂ FORM TỰ CO LẠI VỪA KHÍT NỘI DUNG */
 }
-.register-title {
+
+    .register-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
+    font-size: 1.8rem; /* Giảm cỡ chữ tiêu đề một chút */
     font-weight: 700;
     letter-spacing: 1px;
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 20px; /* Giảm khoảng cách dưới */
     width: 100%;
 }
-.register-label {
-    font-size: 1.1rem;
+
+    .register-label {
+    font-size: 1rem;
     color: #222;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     display: block;
     font-weight: 500;
 }
+
 .register-input {
     width: 100%;
-    padding: 14px 16px;
-    margin-bottom: 24px;
+    padding: 10px 14px;
+    margin-bottom: 16px; /* Giảm khoảng cách giữa các hàng input */
     border-radius: 6px;
     border: 1.5px solid #222;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: 'Montserrat', Arial, sans-serif;
     background: #fff;
     box-sizing: border-box;
-    height: 48px;
+    height: 40px; /* Hạ chiều cao ô nhập từ 48px xuống 40px */
 }
 .register-input:focus {
     outline: none;
-    border-color: #e75480;
+    border-color: #cb5d00;
 }
+
 .register-btn {
     width: 60%;
-    margin: 24px auto 0 auto;
+    margin: 16px auto 0 auto;
     display: block;
     background: #222;
     color: #fff;
     border: none;
     border-radius: 24px;
-    padding: 12px 0;
-    font-size: 16px;
+    padding: 10px 0;
+    font-size: 15px;
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 700;
     cursor: pointer;
     transition: background 0.2s;
 }
 .register-btn:hover {
-    background: #e75480;
+    background: #cb5d00;
 }
+
 .register-divider {
     border: none;
     border-top: 1px solid #eee;
-    margin: 18px 0;
+    margin: 16px 0;
     width: 100%;
 }
 .register-new-title {
@@ -177,35 +182,36 @@ include '../../includes/header.php';
     text-align: center;
     width: 100%;
 }
+
 .register-create-btn {
     width: 150px;
-    margin: 24px auto 0 auto;
+    margin: 16px auto 0 auto;
     display: block;
     background: #fff;
     color: #222;
     border: 1.5px solid #222;
     border-radius: 24px;
-    padding: 12px 0;
-    font-size: 16px;
+    padding: 10px 0;
+    font-size: 15px;
     font-family: 'Montserrat', Arial, sans-serif;
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
 }
 .register-create-btn:hover {
-    background: #e75480;
+    background: #cb5d00;
     color: #fff;
-    border-color: #e75480;
+    border-color: #840000;
 }
 .error {
-    color: #e75480;
+    color: #840000;
     text-align: center;
     margin-bottom: 12px;
     font-size: 14px;
 }
 .form-row {
     display: flex;
-    gap: 32px;
+    gap: 20px; /* Thu hẹp khoảng cách giữa cột trái và phải (từ 32px xuống 20px) */
     margin-bottom: 0;
     width: 100%;
 }

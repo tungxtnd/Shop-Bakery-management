@@ -1,13 +1,13 @@
 <?php
 session_start();
-// filepath: c:\xampp\htdocs\Flower_Shop\views\customer\collection.php
+
 include '../../includes/header.php';
 
 // Lấy danh sách collection từ database
 $conn = new mysqli('localhost', 'root_user', 'admin123', 'ql_bakery');
 $conn->set_charset('utf8');
 $collections = [];
-$sql = "SELECT id, name, description FROM collections";
+$sql = "SELECT id, name, description FROM collections WHERE id != 6"; 
 $result = $conn->query($sql);
 if ($result) {
     while ($row = $result->fetch_assoc()) {
@@ -202,7 +202,7 @@ body {
         if ($selected === 'all') {
             echo '<div class="collection-grid">';
             foreach ($collections as $idx => $col) {
-                $img = "../../assets/img/collection" . ($idx + 1) . ".png";
+                $img = "../../assets/img/collection" . ($idx + 1) . ".jpg";
                 echo '<div class="collection-card">';
                 echo '<a href="?c=' . $idx . '">';
                 echo '<img src="'.$img.'" alt="'.htmlspecialchars($col['name']).'">';

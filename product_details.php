@@ -14,6 +14,20 @@ if ($result && $result->num_rows > 0) {
     echo "<p style='text-align:center;margin-top:40px;'>Product not found.</p>";
 }
 
+// --- BẮT ĐẦU: LẤY THÊM ẢNH TỪ BẢNG PRODUCT_IMAGES ---
+$gallery_images = [];
+// Đưa ảnh chính (ảnh đại diện) vào mảng đầu tiên
+$gallery_images[] = $product['image']; 
+
+$gal_sql = "SELECT image_name FROM product_images WHERE product_id = $product_id";
+$gal_result = $conn->query($gal_sql);
+if ($gal_result && $gal_result->num_rows > 0) {
+    while ($gal_row = $gal_result->fetch_assoc()) {
+        $gallery_images[] = $gal_row['image_name'];
+    }
+}
+// --- KẾT THÚC ---
+
 // Fetch cards from services table
 $cards = [];
 $card_sql = "SELECT id, name, price, image, description FROM services";
@@ -97,7 +111,7 @@ $shipping_fee = 20000;
                 display: inline-block;
                 margin-top: 20px;
                 color: #fff;
-                background: #e75480;
+                background: #840000;
                 padding: 10px 20px;
                 border-radius: 4px;
                 text-decoration: none;
@@ -122,7 +136,7 @@ $shipping_fee = 20000;
                 transition: border-color 0.2s, box-shadow 0.2s;
             }
             .card label.selected {
-                border-color: #e75480;
+                border-color: #840000;
                 box-shadow: 0 0 8px #e75480;
             }
             .card label img {
@@ -139,24 +153,25 @@ $shipping_fee = 20000;
         <div class="product-detail">
             <div class="product-detail-left">
             <h2><?php echo htmlspecialchars($product['name']); ?></h2>
-            <div style="position:relative; width:100%; max-width:500px; margin:20px auto;">
-                <img src="/assets/img/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" style="width:100%; max-width:500px; display:block; border-radius:2px;">
-                <span style="
-                    position:absolute;
-                    right:0;
-                    top:0;
-                    background:rgba(231,84,128,0.9);
-                    color:#fff;
-                    padding:8px 16px;
-                    border-top-right-radius:2px;
-                    font-size:20px;
-                    font-weight:bold;
-                ">
+            <div style="position:relative; width:100%; max-width:500px; margin:20px auto 10px auto;">
+                <img id="main-image" src="/assets/img/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>" style="width:100%; max-width:500px; height: 500px; object-fit: cover; display:block; border-radius:12px;">
+                
+                <span style="position:absolute; right:0; top:0; background:rgba(183, 94, 31, 0.9); color:#fff; padding:8px 16px; border-top-right-radius:12px; font-size:20px; font-weight:bold;">
                     <?php echo number_format($product['price']); ?> VND
                 </span>
             </div>
+
+            <div class="thumbnail-gallery" style="display: flex; justify-content: flex-start; gap: 12px; max-width: 500px; margin: 15px auto 30px auto; overflow-x: auto;">
+                <?php foreach ($gallery_images as $index => $img_name): ?>
+                    <img src="/assets/img/<?php echo htmlspecialchars($img_name); ?>" 
+                         class="thumb-item" 
+                         onclick="changeMainImage(this, '/assets/img/<?php echo htmlspecialchars($img_name); ?>')"
+                         style="width: 55px; height: 55px; margin: 0 !important; display: block; flex-shrink: 0; object-fit: cover; border-radius: 6px; cursor: pointer; border: 2px solid <?php echo $index === 0 ? '#9d503b' : 'transparent'; ?>; transition: border-color 0.2s;"
+                         alt="Gallery Image">
+                <?php endforeach; ?>
+            </div>
             <div style="margin-top:40px;">
-                <h3 style="color:#e75480;">Customer Reviews</h3>
+                <h3 style="color:#840000;">Customer Reviews</h3>
                 <?php
                     // Calculate average rating and total reviews
                     $avg_sql = "SELECT AVG(rating) as avg_rating, COUNT(*) as total_reviews FROM reviews WHERE product_id = $product_id";
@@ -235,7 +250,7 @@ $shipping_fee = 20000;
                             <div>
                                 <img src="/assets/img/<?php echo htmlspecialchars($card['image']); ?>" alt="<?php echo htmlspecialchars($card['name']); ?>" style="width:150px; height:auto; display:block; margin:0;">
                                 <div><?php echo htmlspecialchars($card['name']); ?></div>
-                                <div style="color:#e75480;">+ <?php echo number_format($card['price']); ?> VND</div>
+                                <div style="color:#840000;">+ <?php echo number_format($card['price']); ?> VND</div>
                             </div>
                         </label>
                     <?php endforeach; ?>
@@ -243,10 +258,12 @@ $shipping_fee = 20000;
                 <p style="margin-top:15px;">Card message (optional):</p>
                 <input type="text" name="card_message" style="width:100%; border-radius:4px; border:1px solid #ccc; padding:8px;" placeholder="Leave your message here..."></input>
                 <p style="margin-top:15px; font-size: 18px;">Shipping Fee: 
-                    <b id="shipping-fee" data-fee="<?php echo $shipping_fee; ?>"><?php echo number_format($shipping_fee); ?> VND</b>
+                    <b id="shipping-fee" data-fee="<?php echo $shipping_fee; ?>" style="color:#840000;">
+                        <?php echo number_format($shipping_fee); ?> VND
+                    </b>
                 </p>
                 <p style="margin-top:15px;">Total Price:</p>
-                <p style="font-size:20px;color:#e75480;">
+                <p style="font-size:20px;color:#840000;">
                     <b id="total-price" data-price="<?php echo $product['price']; ?>">
                         <?php echo number_format($product['price']); ?> VND
                     </b>
@@ -255,19 +272,32 @@ $shipping_fee = 20000;
                     type="submit" 
                     name="add_to_cart"
                     value="🛒 Add to Cart" 
-                    style="width:30%; background-color:#FFB5C0; color:black; padding:14px 20px; border:none; border-radius:4px; cursor:pointer;"
+                    style="width:30%; background-color:#9d503b; color:white; padding:14px 20px; border:none; border-radius:4px; cursor:pointer;"
                 >
                 <button 
                     type="button"
                     id="checkout-btn"
                     href="/views/customer/pay.php?id=<?php echo $product_id; ?>"
-                    style="width:30%; background-color:#e75480; color:white; padding:14px 20px; border:none; border-radius:4px; cursor:pointer; margin-left:10px;"
+                    style="width:30%; background-color:#840000; color:white; padding:14px 20px; border:none; border-radius:4px; cursor:pointer; margin-left:10px;"
                 >Checkout</button>
             </form>
         </div>
             
         </div>
         <script>
+        // --- HÀM ĐỔI ẢNH CHÍNH ---
+        function changeMainImage(element, newSrc) {
+            // 1. Thay đổi đường dẫn ảnh của bức ảnh to
+            document.getElementById('main-image').src = newSrc;
+            
+            // 2. Xóa viền màu hồng ở tất cả các ảnh nhỏ
+            document.querySelectorAll('.thumb-item').forEach(function(thumb) {
+                thumb.style.borderColor = 'transparent';
+            });
+            
+            // 3. Thêm viền màu hồng cho ảnh vừa được click để khách hàng biết đang xem ảnh nào
+            element.style.borderColor = '#840000';
+        }
         function updateTotal() {
             const price = parseInt(document.getElementById('total-price').getAttribute('data-price'));
             const qty = parseInt(document.getElementById('quantity').value) || 1;

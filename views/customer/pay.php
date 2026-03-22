@@ -225,7 +225,8 @@ if (isset($_GET['id'])) {
                 <input type="hidden" name="total_amount" value="<?php echo $total; ?>">
             <?php elseif (isset($_POST['checkout_items'])): ?>
                 <input type="hidden" name="checkout_items" value="<?php echo htmlspecialchars($_POST['checkout_items']); ?>">
-            <?php endif; ?>
+                <input type="hidden" name="total_amount" value="<?php echo $total; ?>">
+                <?php endif; ?>
             
             <br><button type="submit" id="btn-pay">Pay Now</button>
         </div>

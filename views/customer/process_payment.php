@@ -89,6 +89,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fullname'], $_POST['e
                 }
                 // Remove from cart
                 $conn->query("DELETE FROM cart_items WHERE user_id = $user_id AND id IN ($ids)");
+                $order_success = true;
             } else {
                 $order_error = "No valid cart items selected.";
             }
@@ -140,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fullname'], $_POST['e
        
         
         // Link trả về giao diện sau khi khách quét QR xong
-        $redirectUrl = "http://shop-bakery-management.test//views/customer/process_payment.php?momo_return=1";
+        $redirectUrl = "http://shop-bakery-management.test/views/customer/process_payment.php?momo_return=1";
         // Link chạy ngầm để MoMo báo server cập nhật database
         $ipnUrl =  "http://shop-bakery-management.test/views/customer/momo_ipn.php"; 
         
@@ -181,6 +182,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fullname'], $_POST['e
         // Chuyển hướng người dùng sang trang quét mã QR của MoMo
         if (isset($jsonResult['payUrl'])) {
             header('Location: ' . $jsonResult['payUrl']);
+            exit;
+        } else {
+            // Hiện thông báo lỗi nếu MoMo từ chối tạo mã (rất quan trọng để biết tại sao lỗi)
+            $error_msg = $jsonResult['message'] ?? 'Lỗi không xác định từ MoMo';
+            echo "<script>alert('Không thể tạo mã QR MoMo: " . $error_msg . "'); window.history.back();</script>";
             exit;
         }
     }

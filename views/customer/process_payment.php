@@ -1,5 +1,6 @@
 <?php
 // filepath: c:\xampp\htdocs\Flower_Shop\views\customer\process_payment.php
+ob_start();
 session_start();
 include '../../includes/header.php';
 include '../../connectdb.php';	
@@ -120,7 +121,70 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['fullname'], $_POST['e
         }
     }
 }
+// --- BẮT ĐẦU: TÍCH HỢP MOMO API ---
+    $payment_method = $_POST['payment_method'] ?? 'cod';
+    
+    if (isset($order_success) && $order_success == true && $payment_method === 'momo') {
+        $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
 
+        // THAY BẰNG KEY TRONG TÀI KHOẢN DEV MOMO CỦA BẠN
+        $partnerCode = "MOMOBKUN20180529"; 
+        $accessKey = "klm05TvNBzhg7h7j";
+        $secretKey = "at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa";
+        
+        $orderInfo = "Thanh toán đơn hàng Bakes #" . $order_id;
+        $amount = (string)$total_amount;
+        $orderId_momo = $order_id . "_" . time(); // Nối thêm time() để mã đơn MoMo không bị trùng
+        
+        // CHÚ Ý: Thay dải link ngrok của bạn vào đây
+       
+        
+        // Link trả về giao diện sau khi khách quét QR xong
+        $redirectUrl = "http://shop-bakery-management.test//views/customer/process_payment.php?momo_return=1";
+        // Link chạy ngầm để MoMo báo server cập nhật database
+        $ipnUrl =  "http://shop-bakery-management.test/views/customer/momo_ipn.php"; 
+        
+        $extraData = "";
+        $requestId = time() . "";
+        $requestType = "captureWallet";
+        
+        $rawHash = "accessKey=".$accessKey."&amount=".$amount."&extraData=".$extraData."&ipnUrl=".$ipnUrl."&orderId=".$orderId_momo."&orderInfo=".$orderInfo."&partnerCode=".$partnerCode."&redirectUrl=".$redirectUrl."&requestId=".$requestId."&requestType=".$requestType;
+        $signature = hash_hmac("sha256", $rawHash, $secretKey);
+        
+        $data = array(
+            'partnerCode' => $partnerCode,
+            'partnerName' => "Bakes Bakery",
+            "storeId" => "BakesStore",
+            'requestId' => $requestId,
+            'amount' => $amount,
+            'orderId' => $orderId_momo,
+            'orderInfo' => $orderInfo,
+            'redirectUrl' => $redirectUrl,
+            'ipnUrl' => $ipnUrl,
+            'lang' => 'vi',
+            'extraData' => $extraData,
+            'requestType' => $requestType,
+            'signature' => $signature
+        );
+
+        // Dùng cURL gửi request lên MoMo
+        $ch = curl_init($endpoint);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Content-Length: ' . strlen(json_encode($data))));
+        $result = curl_exec($ch);
+        curl_close($ch);
+        
+        $jsonResult = json_decode($result, true);
+        
+        // Chuyển hướng người dùng sang trang quét mã QR của MoMo
+        if (isset($jsonResult['payUrl'])) {
+            header('Location: ' . $jsonResult['payUrl']);
+            exit;
+        }
+    }
+    // --- KẾT THÚC: TÍCH HỢP MOMO API ---
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -200,35 +200,36 @@ if (isset($_GET['id'])) {
     <br>
     <a href="cart.php" style="text-decoration: none; color: #333; margin-left: 2%;">Cart</a> > Payment
     <h1>Complete Your Payment</h1>
-    <div class="pay-container">
+   
         <!-- Left: Customer Info -->
+     <form method="post" action="process_payment.php" class="pay-container">
+        
         <div class="pay-left">
             <h2>Customer Information</h2>
-            <form method="post" action="process_payment.php">
-                <label>Full Name:</label><br>
-                <input type="text" name="fullname" required value="<?php echo htmlspecialchars($user_fullname); ?>" placeholder="Enter your full name">
-                <br><label>Phone Number:</label><br>
-                <input type="text" name="phone" required value="<?php echo htmlspecialchars($user_phone); ?>" placeholder="Enter your phone number">
-                <br><label>Email:</label><br>
-                <input type="email" name="email" required value="<?php echo htmlspecialchars($user_email); ?>" placeholder="Enter your email"><br>
-                <br><label>Address:</label><br>
-                <input type="text" name="address" required value="<?php echo htmlspecialchars($user_address); ?>" placeholder="Enter your address">
-                <br><label>Note (optional):</label><br>
-                <textarea name="note" rows="2" placeholder="Leave your message here"></textarea>
-                <!-- Hidden fields to pass order info -->
-                 <?php if (isset($_GET['id'])): ?>
-                    <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
-                    <input type="hidden" name="quantity" value="<?php echo $quantity; ?>">
-                    <input type="hidden" name="card_id" value="<?php echo $card_id; ?>">
-                    <input type="hidden" name="card_message" value="<?php echo $card_message; ?>">
-                    <input type="hidden" name="total_amount" value="<?php echo $total; ?>">
-                <?php elseif (isset($_POST['checkout_items'])): ?>
-                    <input type="hidden" name="checkout_items" value="<?php echo htmlspecialchars($_POST['checkout_items']); ?>">
-                <?php endif; ?>
-                <br><button type="submit" disabled>Pay Now</button>
-            </form>
+            <label>Full Name:</label><br>
+            <input type="text" name="fullname" required value="<?php echo htmlspecialchars($user_fullname); ?>" placeholder="Enter your full name">
+            <br><label>Phone Number:</label><br>
+            <input type="text" name="phone" required value="<?php echo htmlspecialchars($user_phone); ?>" placeholder="Enter your phone number">
+            <br><label>Email:</label><br>
+            <input type="email" name="email" required value="<?php echo htmlspecialchars($user_email); ?>" placeholder="Enter your email"><br>
+            <br><label>Address:</label><br>
+            <input type="text" name="address" required value="<?php echo htmlspecialchars($user_address); ?>" placeholder="Enter your address">
+            <br><label>Note (optional):</label><br>
+            <textarea name="note" rows="2" placeholder="Leave your message here"></textarea>
+            
+            <?php if (isset($_GET['id'])): ?>
+                <input type="hidden" name="product_id" value="<?php echo $product_id; ?>">
+                <input type="hidden" name="quantity" value="<?php echo $quantity; ?>">
+                <input type="hidden" name="card_id" value="<?php echo $card_id; ?>">
+                <input type="hidden" name="card_message" value="<?php echo $card_message; ?>">
+                <input type="hidden" name="total_amount" value="<?php echo $total; ?>">
+            <?php elseif (isset($_POST['checkout_items'])): ?>
+                <input type="hidden" name="checkout_items" value="<?php echo htmlspecialchars($_POST['checkout_items']); ?>">
+            <?php endif; ?>
+            
+            <br><button type="submit" id="btn-pay">Pay Now</button>
         </div>
-        <!-- Right: Payment Info -->
+
         <div class="pay-right">
             <h2>Your order</h2>
             <hr>
@@ -273,38 +274,33 @@ if (isset($_GET['id'])) {
             <h2>Payment method</h2>
             <input type="radio" name="payment_method" value="cod" checked> Cash on Delivery (COD)<br>
             <input type="radio" name="payment_method" value="bank_transfer"> Bank Transfer<br>
-            <div id="bank-info" style="display:none; margin-top:15px; text-align:center;">
-                <div style="margin-bottom: 12px; color:#555;">Make a transfer to our bank account immediately. Please use your Order ID in the Payment Details section. Your order will be shipped after the payment transaction is completed.</div>
-                <img src="../../assets/img/bank.png" alt="Bank Transfer Info" style="max-width:250px; width:100%;">
+            <input type="radio" name="payment_method" value="momo"> Thanh toán qua Ví MoMo (QR Code)<br>
+            
+            <div id="bank-info" style="display:none; margin-top:15px; color:#555;">
+                Vui lòng chuyển khoản vào STK: <strong>123456789</strong> - Ngân hàng Vietcombank (Chi nhánh X)
             </div>
-            <hr>
-            <input type="checkbox" name="terms" required>I have read and agree to the website <span style="color: #E85697;">terms and conditions</span><br>
-            <input type="checkbox" name="privacy" required>I have read and agree to the website <span style="color: #E85697;">privacy policy</span><br>
         </div>
-    </div>
+    </form>
+  
     <?php include '../../includes/footer.php'; ?>
+    
     <script>
+        // Chỉ giữ lại code hiển thị thông tin ngân hàng khi click vào Bank Transfer
         document.querySelectorAll('input[name="payment_method"]').forEach(function(radio) {
             radio.addEventListener('change', function() {
-                document.getElementById('bank-info').style.display =
-                    this.value === 'bank_transfer' ? 'block' : 'none';
+                var bankInfo = document.getElementById('bank-info');
+                if (bankInfo) {
+                    bankInfo.style.display = this.value === 'bank_transfer' ? 'block' : 'none';
+                }
             });
         });
+        
         // Show if already selected (on reload)
-        if(document.querySelector('input[name="payment_method"]:checked')?.value === 'bank_transfer') {
-            document.getElementById('bank-info').style.display = 'block';
+        var checkedMethod = document.querySelector('input[name="payment_method"]:checked');
+        if(checkedMethod && checkedMethod.value === 'bank_transfer') {
+            var bankInfo = document.getElementById('bank-info');
+            if (bankInfo) bankInfo.style.display = 'block';
         }
-        // Enable/disable Pay Now button based on checkboxes
-        function updatePayButton() {
-            const terms = document.querySelector('input[name="terms"]');
-            const privacy = document.querySelector('input[name="privacy"]');
-            const payBtn = document.querySelector('.pay-left button[type="submit"]');
-            payBtn.disabled = !(terms.checked && privacy.checked);
-        }
-        document.querySelector('input[name="terms"]').addEventListener('change', updatePayButton);
-        document.querySelector('input[name="privacy"]').addEventListener('change', updatePayButton);
-        // Initialize on page load
-        updatePayButton();
     </script>
 </body>
 </html>

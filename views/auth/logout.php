@@ -1,5 +1,4 @@
 <?php
-// filepath: d:\Xampp\htdocs\flower_shop\views\auth\logout.php
 session_start();
 include '../../connectdb.php';
 

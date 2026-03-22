@@ -512,21 +512,6 @@ if (session_status() === PHP_SESSION_NONE) {
     <?php
     include 'connectdb.php';
 
-    // $sql = "
-    //     SELECT 
-    //         p.id,
-    //         p.name, 
-    //         p.image, 
-    //         p.price, 
-    //         SUM(oi.quantity) AS total_sales
-    //     FROM products p
-    //     LEFT JOIN order_items oi ON p.id = oi.product_id
-    //     WHERE p.status = 1
-    //     GROUP BY p.id
-    //     ORDER BY total_sales DESC
-    //     LIMIT 5
-    // ";
-
     $sql = "
     SELECT 
         p.id,
@@ -599,9 +584,6 @@ if (session_status() === PHP_SESSION_NONE) {
         }
     }
 
-    // ======================================================
-    // PHẦN 1: HỆ THỐNG TRƯỢT SẢN PHẨM (CAROUSEL)
-    // ======================================================
     function nextBakery() {
         current = (current + 1) % bakeries.length;
         renderSlide();
@@ -622,11 +604,8 @@ if (session_status() === PHP_SESSION_NONE) {
         clearInterval(autoSlide);
     }
 
-    // ======================================================
-    // PHẦN 2: HỆ THỐNG ĐỔI ẢNH KHI DI CHUỘT (HOVER GALLERY)
-    // ======================================================
+
     function playGallery(wrapper) {
-        // QUAN TRỌNG: Ngay khi chuột chạm vào ảnh, ta ra lệnh dừng trượt sản phẩm
         stopAutoSlide(); 
         
         const frames = wrapper.querySelectorAll('.hover-frame');
@@ -658,15 +637,9 @@ if (session_status() === PHP_SESSION_NONE) {
         startAutoSlide(); 
     }
 
-    // ======================================================
-    // 3. KHỞI ĐỘNG HỆ THỐNG KHI LOAD TRANG
-    // ======================================================
     renderSlide();
     startAutoSlide();
 
-    // ------------------------------------------------------
-    // CODE CŨ CỦA BẠN DÀNH CHO PHẦN FAQ (GIỮ NGUYÊN)
-    // ------------------------------------------------------
     document.querySelectorAll('.containerc p, .containerc h4').forEach(el => el.style.display = 'none');
     document.querySelectorAll('.containerc .faq-section h3').forEach(h3 => {
         h3.addEventListener('click', function() {
@@ -709,104 +682,6 @@ if (session_status() === PHP_SESSION_NONE) {
     });
 </script>
 
-    <!-- <script>
-        // PHP to JS: encode the $bakeries array
-        const bakeries = <?php echo json_encode($bakeries); ?>;
-        let current = 0;
-        const imagesPerSlide = 3;
-        const slideshow = document.getElementById('bakeries-slideshow');
-
-        function renderSlide() {
-            slideshow.innerHTML = '';
-            for (let i = 0; i < imagesPerSlide; i++) {
-                const idx = (current + i) % bakeries.length;
-                const bakery = bakeries[idx];
-                const div = document.createElement('div');
-                div.className = 'bakery';
-                div.innerHTML = `
-                    <a href="/product_details.php?id=${bakery.id}" style="text-decoration:none;color:inherit;">
-                        <img src="/assets/img/${bakery.image}" alt="${bakery.name}">
-                        <h3>${bakery.name}</h3>
-                        <p>${Number(bakery.price).toLocaleString()} VND</p>
-                    </a>
-                `;
-                slideshow.appendChild(div);
-            }
-        }
-
-        function nextBakery() {
-            current = (current + 1) % bakeries.length;
-            renderSlide();
-        }
-
-        function prevBakery() {
-            current = (current - 1 + bakeries.length) % bakeries.length;
-            renderSlide();
-        }
-
-        // Auto-slide every 3 seconds
-        let autoSlide = setInterval(nextBakery, 3000);
-
-        // Pause on hover
-        slideshow.addEventListener('mouseenter', () => clearInterval(autoSlide));
-        slideshow.addEventListener('mouseleave', () => autoSlide = setInterval(nextBakery, 3000));
-
-        renderSlide();
-
-        // Hide all <p> and <h4> at start
-        document.querySelectorAll('.containerc p, .containerc h4').forEach(el => el.style.display = 'none');
-
-        // Toggle FAQ section on h3 click
-        document.querySelectorAll('.containerc .faq-section h3').forEach(h3 => {
-            h3.addEventListener('click', function() {
-                const section = h3.parentElement;
-                const isOpen = h3.classList.toggle('open');
-                // Toggle icon
-                h3.querySelector('.toggle-icon').innerHTML = isOpen
-                    ? '<i class="fa-solid fa-chevron-up"></i>'
-                    : '<i class="fa-solid fa-chevron-down"></i>';
-                // Show/hide all h4 and p in this section (except h3)
-                Array.from(section.children).forEach(child => {
-                    if (child !== h3) {
-                        if (child.tagName === 'H4') {
-                            child.style.display = isOpen ? 'flex' : 'none';
-                            // Reset h4 icon and hide its p's
-                            child.classList.remove('open');
-                            child.querySelector('.toggle-icon').innerHTML = '<i class="fa-solid fa-chevron-down"></i>';
-                            let next = child.nextElementSibling;
-                            while (next && next.tagName === 'P') {
-                                next.style.display = 'none';
-                                next = next.nextElementSibling;
-                            }
-                        } else if (child.tagName === 'P') {
-                            // Only show <p> if not after h4
-                            const prev = child.previousElementSibling;
-                            if (!prev || prev.tagName !== 'H4') {
-                                child.style.display = isOpen ? 'block' : 'none';
-                            }
-                        }
-                    }
-                });
-            });
-        });
-
-        // Toggle answer on h4 click
-        document.querySelectorAll('.containerc .faq-section h4').forEach(h4 => {
-            h4.addEventListener('click', function(e) {
-                e.stopPropagation(); // Prevent h3 toggle
-                const isOpen = h4.classList.toggle('open');
-                h4.querySelector('.toggle-icon').innerHTML = isOpen
-                    ? '<i class="fa-solid fa-chevron-up"></i>'
-                    : '<i class="fa-solid fa-chevron-down"></i>';
-                // Toggle all following <p> until next h4/h3
-                let next = h4.nextElementSibling;
-                while (next && next.tagName === 'P') {
-                    next.style.display = isOpen ? 'block' : 'none';
-                    next = next.nextElementSibling;
-                }
-            });
-        });
-</script> -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>

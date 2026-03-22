@@ -1,5 +1,4 @@
 <?php
-// filepath: d:\Xampp\htdocs\flower_shop\views\customer\shop.php
 session_start();
 include 'connectdb.php';
 
@@ -112,36 +111,34 @@ $total_pages = ceil($total_products / $per_page);
        
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Chia chính xác 3 cột bằng nhau */
-            gap: 30px; /* Khoảng cách giữa các sản phẩm */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; 
             width: 100%;
         }
 
-        /* 2. THẺ SẢN PHẨM: Xóa bỏ hoàn toàn khung trắng và đổ bóng */
+        
         .product-card {
-            background: transparent; /* Xóa nền trắng */
-            box-shadow: none; /* Xóa viền mờ đổ bóng */
-            padding: 0; /* Xóa khoảng trắng bao quanh để ảnh tràn ra ngoài */
+            background: transparent; 
+            box-shadow: none; 
+            padding: 0; 
             width: 100%;
             box-sizing: border-box;
             text-align: center;
             height: 100%;
-            transition: transform 0.3s ease; /* Thêm hiệu ứng nhún mượt mà */
+            transition: transform 0.3s ease; 
         }
 
-        /* Đổi hiệu ứng hover: Thay vì đổ bóng ô trắng, ta cho cả khối bánh hơi nảy lên 1 chút */
         .product-card:hover { 
             box-shadow: none; 
             transform: translateY(-8px); 
         }
 
-        /* 3. ẢNH SẢN PHẨM: Bo góc trực tiếp vào bức ảnh giống hình mẫu */
         .product-card img { 
             width: 100%; 
-            height: 280px; /* Tùy chỉnh độ cao ảnh cho vừa mắt (khoảng 280-300px là đẹp) */
+            height: 280px; 
             object-fit: cover; 
-            border-radius: 12px; /* Bo tròn các góc của tấm ảnh */
-            margin-bottom: 15px; /* Đẩy phần tên bánh và giá tiền cách xa ảnh ra một chút */
+            border-radius: 12px; 
+            margin-bottom: 15px; 
         }
         .product-card h3 { 
             margin: 12px 0 8px 0; 

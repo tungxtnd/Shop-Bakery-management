@@ -96,8 +96,6 @@ include '../../includes/header.php'; ?>
     height: calc(100vh - 70px);
     min-height: unset;
     background: url('https://bromabakery.com/wp-content/uploads/2020/01/Healthy-Thin-Mints-2-1067x1600.jpg') center center/cover no-repeat;
-
-    /* background: url('https://www.odealarose.com/media/cache/1920_1080_webp/build/images/flower-delivery.webp') center center/cover no-repeat; */
     display: flex;
     align-items: center;
     justify-content: center;

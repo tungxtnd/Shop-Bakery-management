@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
-  <title>Blossom Footer</title>
+  <title>Bakery Footer</title>
   <style>
     footer {
       margin: 0;
@@ -163,11 +163,11 @@
       <div class="footer-col">
         <h3>Shop</h3>
         <ul>
-          <li><a href="#">All Bouquets</a></li>
-          <li><a href="#">Signature Bouquets</a></li>
-          <li><a href="#">Preserved Roses</a></li>
-          <li><a href="#">Roses</a></li>
-          <li><a href="#">Flowers and Gifts</a></li>
+          <li><a href="#">All cakes</a></li>
+          <li><a href="#">Signature Cakes</a></li>
+          <li><a href="#">Preserved Cakes</a></li>
+          <li><a href="#">Traditional Cakes</a></li>
+          <li><a href="#">Birthday Cakes</a></li>
         </ul>
       </div>
       <div class="footer-col">

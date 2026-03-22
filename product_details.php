@@ -14,9 +14,8 @@ if ($result && $result->num_rows > 0) {
     echo "<p style='text-align:center;margin-top:40px;'>Product not found.</p>";
 }
 
-// --- BẮT ĐẦU: LẤY THÊM ẢNH TỪ BẢNG PRODUCT_IMAGES ---
 $gallery_images = [];
-// Đưa ảnh chính (ảnh đại diện) vào mảng đầu tiên
+
 $gallery_images[] = $product['image']; 
 
 $gal_sql = "SELECT image_name FROM product_images WHERE product_id = $product_id";
@@ -26,7 +25,6 @@ if ($gal_result && $gal_result->num_rows > 0) {
         $gallery_images[] = $gal_row['image_name'];
     }
 }
-// --- KẾT THÚC ---
 
 // Fetch cards from services table
 $cards = [];
@@ -287,15 +285,11 @@ $shipping_fee = 20000;
         <script>
         // --- HÀM ĐỔI ẢNH CHÍNH ---
         function changeMainImage(element, newSrc) {
-            // 1. Thay đổi đường dẫn ảnh của bức ảnh to
             document.getElementById('main-image').src = newSrc;
-            
-            // 2. Xóa viền màu hồng ở tất cả các ảnh nhỏ
             document.querySelectorAll('.thumb-item').forEach(function(thumb) {
                 thumb.style.borderColor = 'transparent';
             });
             
-            // 3. Thêm viền màu hồng cho ảnh vừa được click để khách hàng biết đang xem ảnh nào
             element.style.borderColor = '#840000';
         }
         function updateTotal() {
